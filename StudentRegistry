@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StudentRegistry {
+
+    string[] public students;
+
+    function addStudent(string memory _name) public {
+        students.push(_name);
+    }
+
+    function getStudent(uint index) public view returns (string memory) {
+        return students[index];
+    }
+
+    function getTotalStudents() public view returns (uint) {
+        return students.length;
+    }
+}
