@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MiniBank {
+
+    uint public balance;
+
+    constructor(uint _balance) {
+        balance = _balance;
+    }
+
+    function deposit(uint amount) public {
+        balance += amount;
+    }
+
+    function withdraw(uint amount) public {
+        require(balance >= amount, "Insufficient balance");
+        balance -= amount;
+    }
+
+    function resetBalance() public {
+        balance = 0;
+    }
+}
