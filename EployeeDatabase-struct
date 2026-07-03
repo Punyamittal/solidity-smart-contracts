@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EmployeeDatabase {
+
+    struct Employee {
+        string name;
+        uint age;
+        uint salary;
+    }
+
+    mapping(uint => Employee) public employees;
+
+    function addEmployee(
+        uint id,
+        string memory _name,
+        uint _age,
+        uint _salary
+    ) public {
+        Employee memory s;
+
+        s.name = _name;
+        s.age = _age;
+        s.salary = _salary;
+
+        employees[id] = s;
+    }
+
+    function getEmployee(uint id)
+        public
+        view
+        returns (
+            string memory,
+            uint,
+            uint
+        )
+    {
+        return (
+            employees[id].name,
+            employees[id].age,
+            employees[id].salary
+        );
+    }
+
+    function updateSalary(uint id, uint newSalary) public {
+        employees[id].salary = newSalary;
+    }
+}
