@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StudentMarks {
+
+    mapping(string => uint) public marks;
+
+    function setMarks(string memory _name, uint _marks) public {
+        marks[_name] = _marks;
+    }
+
+    function getMarks(string memory _name) public view returns (uint) {
+        return marks[_name];
+    }
+
+    function isPassed(string memory _name) public view returns (bool) {
+        return marks[_name] >= 40;
+    }
+}
