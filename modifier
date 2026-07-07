@@ -1,0 +1,19 @@
+pragma solidity ^0.8.0;
+contract smartVault{
+    address public owner;
+    constructor(){
+        owner = msg.sender;
+    }
+    modifier onlyOwner(){
+    require(msg.sender == owner,"You are not the owner");
+    _;
+    }
+    uint public money=0;
+    function deposit(uint amount) public{
+        money+=amount;
+    }
+    function withdraw(uint amount) public onlyOwner{
+        require(amount<=money ,"Not enough Balance");
+        money-=amount;
+    }
+}
