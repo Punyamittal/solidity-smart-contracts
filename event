@@ -1,0 +1,15 @@
+pragma solidity ^0.8.0;
+contract Wallet{
+    uint public balance;
+    event Deposited(address user,uint amount);
+    event Withdrawn(address user ,uint amount);
+    function Deposit (uint amount) public {
+        balance+=amount;
+        emit Deposited(msg.sender,amount);
+    }
+    function Withdraw (uint amount) public{
+        require(amount<=balance,"Not Enough Balance");
+        balance-=amount;
+        emit Withdrawn(msg.sender,amount);
+    }
+}
